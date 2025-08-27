@@ -40,6 +40,11 @@ dependencies {
         exclude(group = "org.openjfx")
     }
     implementation("org.kordamp.ikonli:ikonli-javafx:12.3.1")
+
+    // DI
+    implementation(platform("io.insert-koin:koin-bom:4.1.0"))
+    implementation("io.insert-koin:koin-core-jvm")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
