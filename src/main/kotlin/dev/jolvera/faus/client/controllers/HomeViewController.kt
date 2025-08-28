@@ -1,4 +1,9 @@
 package dev.jolvera.faus.client.controllers
 
-class HomeViewController {
+import javafx.scene.layout.Region
+
+class HomeViewController: BaseController {
+    override fun getView(): Region {
+        TODO("Not yet implemented")
+    }
 }

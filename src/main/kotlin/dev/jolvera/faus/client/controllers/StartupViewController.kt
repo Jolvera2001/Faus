@@ -1,4 +1,9 @@
 package dev.jolvera.faus.client.controllers
 
-class StartupViewController {
+import javafx.scene.layout.Region
+
+class StartupViewController: BaseController {
+    override fun getView(): Region {
+        TODO("Not yet implemented")
+    }
 }

@@ -1,26 +1,57 @@
 package dev.jolvera.faus.client.controllers
 
 import dev.jolvera.faus.client.EventBus
+import dev.jolvera.faus.client.Events
 import dev.jolvera.faus.client.Screens
 import dev.jolvera.faus.client.interactors.AppViewInteractor
 import dev.jolvera.faus.client.models.AppViewModel
 import dev.jolvera.faus.client.viewBuilders.AppViewBuilder
 import dev.jolvera.faus.domain.UserService
 import javafx.scene.layout.Region
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.javafx.JavaFx
+import java.util.UUID
 
 class AppViewController(
     val eventBus: EventBus,
     val userService: UserService,
-) {
-    private val model = AppViewModel()
-    private val interactor = AppViewInteractor()
-    private val view = AppViewBuilder(model)
-
+): BaseController {
     private val screenControllers = mapOf(
         Screens.STARTUP to StartupViewController(),
         Screens.HOME to HomeViewController(),
     )
-    fun getView(): Region {
+
+    private val model = AppViewModel()
+    private val interactor = AppViewInteractor()
+    private val view = AppViewBuilder(model, screenControllers)
+
+    init {
+        setupEventListeners()
+    }
+
+    override fun getView(): Region {
         return view.build()
+    }
+
+    fun setupEventListeners() {
+        eventBus.subscribe<Events.ScreenEvents>()
+            .onEach { event ->
+                when (event) {
+                    is Events.ScreenEvents.NavigateTo -> {
+                        model.currentScreen = event.screen
+                    }
+                    is Events.ScreenEvents.LogIn -> {
+                        model.userId = event.userId
+                        model.currentScreen = Screens.HOME
+                    }
+                    is Events.ScreenEvents.LogOut -> {
+                        model.userId = null
+                        model.currentScreen = Screens.STARTUP
+                    }
+                }
+            }.launchIn(CoroutineScope(Dispatchers.JavaFx))
     }
 }
