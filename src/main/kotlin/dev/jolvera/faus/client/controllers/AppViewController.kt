@@ -20,7 +20,7 @@ class AppViewController(
 ): BaseController {
     private val screenControllers = mapOf(
         Screens.STARTUP to StartupViewController(eventBus),
-        Screens.HOME to HomeViewController(),
+        Screens.HOME to HomeViewController(eventBus),
     )
 
     private val model = AppViewModel()
