@@ -1,6 +1,6 @@
 package dev.jolvera.faus.client.viewBuilders
 
-import dev.jolvera.faus.client.models.MainViewModel
+import dev.jolvera.faus.client.models.RouteViewModel
 import javafx.beans.binding.Bindings
 import javafx.event.EventHandler
 import javafx.scene.Node
@@ -11,8 +11,8 @@ import javafx.scene.layout.BorderPane
 import javafx.scene.layout.Region
 import javafx.util.Builder
 
-class MainViewBuilder(
-    private val model: MainViewModel
+class RouteViewBuilder(
+    private val model: RouteViewModel
 ): Builder<Region> {
     override fun build(): Region {
         val layout = BorderPane()
@@ -40,7 +40,7 @@ class MainViewBuilder(
                         } else {
                             println("logged in")
                         }
-                        // would pass in a consumer instead
+                        // would pass in a Unit
                     }
                 }
             )

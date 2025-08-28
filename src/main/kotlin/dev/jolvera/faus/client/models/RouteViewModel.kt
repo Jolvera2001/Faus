@@ -6,7 +6,7 @@ import javafx.beans.property.ObjectProperty
 import javafx.beans.property.SimpleObjectProperty
 import java.util.UUID
 
-class MainViewModel {
+class RouteViewModel {
     private val _userId: ObjectProperty<UUID> = SimpleObjectProperty()
 
     var userId: UUID?
