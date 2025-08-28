@@ -76,6 +76,12 @@ class HomeViewBuilder: Builder<Region> {
                         SeparatorMenuItem(),
                         MenuItem("Log Out")
                     )
+                },
+                Menu("File").apply {
+                    items.addAll(
+                        MenuItem("Export"),
+                        MenuItem("Import")
+                    )
                 }
             )
         }
