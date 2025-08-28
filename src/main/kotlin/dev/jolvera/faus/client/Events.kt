@@ -8,8 +8,8 @@ abstract class Events {
     val timestamp: Instant = Instant.now()
 
     sealed class ScreenEvents: Events() {
-        data object LogOut: ScreenEvents()
-        data class LogIn(val userId: UUID): ScreenEvents()
+        data object SignOut: ScreenEvents()
+        data class SignIn(val userId: UUID): ScreenEvents()
         data class NavigateTo(val screen: Screens): ScreenEvents()
     }
 }

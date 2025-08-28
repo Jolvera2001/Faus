@@ -1,6 +1,7 @@
 package dev.jolvera.faus.client.viewBuilders
 
 import dev.jolvera.faus.client.models.StartupViewModel
+import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.geometry.Orientation
 import javafx.geometry.Pos
@@ -14,7 +15,8 @@ import javafx.scene.text.Font
 import javafx.util.Builder
 
 class StartupViewBuilder(
-    private val model: StartupViewModel
+    private val model: StartupViewModel,
+    private val signInCommand: () -> Unit
 ): Builder<Region> {
     override fun build(): Region {
         val fields = fields()
@@ -76,7 +78,7 @@ class StartupViewBuilder(
 
     fun loginButtons(): Node {
         val loginButton = Button("Login").apply {
-
+            onAction = EventHandler { signInCommand() }
         }
         val clearLoginButton = Button("Clear").apply {
 

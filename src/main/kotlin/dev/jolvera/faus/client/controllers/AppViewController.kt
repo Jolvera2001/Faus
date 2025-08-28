@@ -13,7 +13,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.javafx.JavaFx
-import java.util.UUID
 
 class AppViewController(
     val eventBus: EventBus,
@@ -43,11 +42,11 @@ class AppViewController(
                     is Events.ScreenEvents.NavigateTo -> {
                         model.currentScreen = event.screen
                     }
-                    is Events.ScreenEvents.LogIn -> {
+                    is Events.ScreenEvents.SignIn -> {
                         model.userId = event.userId
                         model.currentScreen = Screens.HOME
                     }
-                    is Events.ScreenEvents.LogOut -> {
+                    is Events.ScreenEvents.SignOut -> {
                         model.userId = null
                         model.currentScreen = Screens.STARTUP
                     }
