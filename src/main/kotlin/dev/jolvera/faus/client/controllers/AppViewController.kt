@@ -20,7 +20,7 @@ class AppViewController(
     val userService: UserService,
 ): BaseController {
     private val screenControllers = mapOf(
-        Screens.STARTUP to StartupViewController(),
+        Screens.STARTUP to StartupViewController(eventBus),
         Screens.HOME to HomeViewController(),
     )
 

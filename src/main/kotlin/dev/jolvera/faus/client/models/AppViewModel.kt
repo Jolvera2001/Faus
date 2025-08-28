@@ -6,8 +6,8 @@ import javafx.beans.property.SimpleObjectProperty
 import java.util.UUID
 
 class AppViewModel {
-    private val _currentScreen: ObjectProperty<Screens> = SimpleObjectProperty()
-    private val _currentUserId: ObjectProperty<UUID?> = SimpleObjectProperty()
+    private val _currentScreen: ObjectProperty<Screens> = SimpleObjectProperty(Screens.STARTUP)
+    private val _currentUserId: ObjectProperty<UUID?> = SimpleObjectProperty(null)
 
     var currentScreen: Screens
         get() = _currentScreen.get()
