@@ -1,5 +1,14 @@
 package dev.jolvera.faus.client
 
-abstract class Events {
+import java.time.Instant
 
+
+abstract class Events {
+    val timestamp: Instant = Instant.now()
+
+    sealed class ScreenEvents: Events() {
+        data object LogIn: ScreenEvents()
+        data object LogOut: ScreenEvents()
+        data class NavigateTo(val screen: Screens): ScreenEvents()
+    }
 }
