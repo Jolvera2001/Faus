@@ -1,6 +1,7 @@
 package dev.jolvera.faus.client.viewBuilders
 
 import dev.jolvera.faus.client.models.MainViewModel
+import javafx.beans.binding.Bindings
 import javafx.event.EventHandler
 import javafx.scene.Node
 import javafx.scene.control.Menu
@@ -12,7 +13,6 @@ import javafx.util.Builder
 
 class MainViewBuilder(
     private val model: MainViewModel
-    // Consumer<Runnables> for delegates
 ): Builder<Region> {
     override fun build(): Region {
         val layout = BorderPane()
@@ -29,7 +29,19 @@ class MainViewBuilder(
         val userMenu = Menu("User").apply {
             items.addAll(
                 MenuItem("Log Out").apply {
-                    onAction = EventHandler { println("Pressed Log Out!") }
+                    textProperty().bind(
+                        Bindings.`when`(model.isLoggedIn)
+                            .then("Log Out")
+                            .otherwise("Log In")
+                    )
+                    onAction = EventHandler {
+                        if (model.isLoggedIn.get()) {
+                            println("Logged Out")
+                        } else {
+                            println("logged in")
+                        }
+                        // would pass in a consumer instead
+                    }
                 }
             )
         }
