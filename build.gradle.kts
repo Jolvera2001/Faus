@@ -45,6 +45,12 @@ dependencies {
     implementation(platform("io.insert-koin:koin-bom:4.1.0"))
     implementation("io.insert-koin:koin-core-jvm")
 
+    // DI
+    implementation("org.jetbrains.exposed:exposed-core:0.61.0")
+    implementation("org.jetbrains.exposed:exposed-jdbc:0.61.0")
+    implementation("org.jetbrains.exposed:exposed-java-time:0.61.0")
+    implementation("org.xerial:sqlite-jdbc:3.50.3.0")
+
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2")
