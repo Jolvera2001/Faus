@@ -2,8 +2,8 @@ package dev.jolvera.faus
 
 import dev.jolvera.faus.client.EventBus
 import dev.jolvera.faus.client.controllers.AppViewController
-import dev.jolvera.faus.domain.UserService
-import dev.jolvera.faus.domain.UserServiceImpl
+import dev.jolvera.faus.domain.services.UserService
+import dev.jolvera.faus.domain.services.UserServiceImpl
 import dev.jolvera.faus.domain.tables.Users
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils

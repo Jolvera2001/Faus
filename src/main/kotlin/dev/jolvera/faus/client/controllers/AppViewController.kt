@@ -6,7 +6,7 @@ import dev.jolvera.faus.client.Screens
 import dev.jolvera.faus.client.interactors.AppViewInteractor
 import dev.jolvera.faus.client.models.AppViewModel
 import dev.jolvera.faus.client.viewBuilders.AppViewBuilder
-import dev.jolvera.faus.domain.UserService
+import dev.jolvera.faus.domain.services.UserService
 import javafx.scene.layout.Region
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
